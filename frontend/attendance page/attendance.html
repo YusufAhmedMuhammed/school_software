@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attendance Page</title>
+    <link rel="stylesheet" href="attendance.css" />
+    <script src="attendance.js"></script>
+  </head>
+  <body class="page-content"id="page-content">
+    <header>
+      <nav class="navbar">
+        <div class="nav-logo">
+          <a href="#">SchoolApp</a>
+        </div>
+        <ul class="nav-links">
+          <li>
+          <a
+            href="http://127.0.0.1:5500/school%20system%20software/frontend/welcome%20page/index.html"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a href="http://127.0.0.1:5500/school%20system%20software/frontend/profile/profile.html">Profile</a></li>
+        <li>
+          <a href="http://127.0.0.1:5500/school%20system%20software/frontend/attendance%20page/attendance.html">Attendance</a></li>
+        <li>
+          <a href="http://127.0.0.1:5500/school%20system%20software/frontend/courses/courses.html">Courses</a></li>
+        <li>
+          <a
+            href="http://127.0.0.1:5500/school%20system%20software/frontend/login%20page/login.html"
+            >Login</a
+          >
+        </li>
+      </nav>
+      <h1>Attendance Management</h1>
+    </header>
+    <section class="date_picker">
+      <label for="datePicker">Select a date:</label>
+      <input type="date" id="datePicker" name="datePicker" />
+    </section>
+    <section class="attendance_table">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Present</th>
+            <th>Absent</th>
+            <th>permission</th>
+          </tr>
+        </thead>
+        <thead>
+          <tr>
+            <th>1</th>
+            <th>Yusuf Ahmed</th>
+            <td><input type="radio" name="attendance1" value="present" /></td>
+            <td><input type="radio" name="attendance1" value="absent" /></td>
+            <td>
+              <input type="radio" name="permission1" value="permission" />
+            </td>
+          </tr>
+        </thead>
+        <thead>
+          <tr>
+            <th>2</th>
+            <th>Ahmed muhammed</th>
+            <td><input type="radio" name="attendance2" value="present" /></td>
+            <td><input type="radio" name="attendance2" value="absent" /></td>
+            <td>
+              <input type="radio" name="permission2" value="permission" />
+            </td>
+          </tr>
+        </thead>
+        <thead>
+          <tr>
+            <th>3</th>
+            <th>Abraham kebede</th>
+            <td><input type="radio" name="attendance3" value="present" /></td>
+            <td><input type="radio" name="attendance3" value="absent" /></td>
+            <td>
+              <input type="radio" name="permission3" value="permission" />
+            </td>
+          </tr>
+        </thead>
+        <thead>
+          <tr>
+            <th>4</th>
+            <th>Bob Smith</th>
+            <td><input type="radio" name="attendance4" value="present" /></td>
+            <td><input type="radio" name="attendance4" value="absent" /></td>
+            <td>
+              <input type="radio" name="permission4" value="permission" />
+            </td>
+          </tr>
+        </thead>
+        <thead>
+          <tr>
+            <th>5</th>
+            <th>Charlie Brown</th>
+            <td><input type="radio" name="attendance5" value="present" /></td>
+            <td><input type="radio" name="attendance5" value="absent" /></td>
+            <td>
+              <input type="radio" name="permission5" value="permission" />
+            </td>
+          </tr>
+        </thead>
+        <thead>
+          <tr>
+            <th>6</th>
+            <th>Diana Prince</th>
+            <td><input type="radio" name="attendance6" value="present" /></td>
+            <td><input type="radio" name="attendance6" value="absent" /></td>
+            <td>
+              <input type="radio" name="permission6" value="permission" />
+            </td>
+          </tr>
+        </thead>
+        <thead>
+          <tr>
+            <th>7</th>
+            <th>Ethan Hunt</th>
+            <td><input type="radio" name="attendance7" value="present" /></td>
+            <td><input type="radio" name="attendance7" value="absent" /></td>
+            <td>
+              <input type="radio" name="permission7" value="permission" />
+            </td>
+          </tr>
+        </thead>
+        <thead>
+          <tr>
+            <th>8</th>
+            <th>Fiona Gallagher</th>
+            <td><input type="radio" name="attendance8" value="present" /></td>
+            <td><input type="radio" name="attendance8" value="absent" /></td>
+            <td>
+              <input type="radio" name="permission8" value="permission" />
+            </td>
+          </tr>
+        </thead>
+        <thead>
+          <tr>
+            <th>9</th>
+            <th>George Miller</th>
+            <td><input type="radio" name="attendance9" value="present" /></td>
+            <td><input type="radio" name="attendance9" value="absent" /></td>
+            <td>
+              <input type="radio" name="permission9" value="permission" />
+            </td>
+          </tr>
+        </thead>
+        <thead>
+          <tr>
+            <th>10</th>
+            <th>Julia Roberts</th>
+            <td><input type="radio" name="attendance10" value="present" /></td>
+            <td><input type="radio" name="permission10" value="absent" /></td>
+            <td>
+              <input type="radio" name="attendance10" value="permission" />
+            </td>
+          </tr>
+        </thead>
+      </table>
+    </section>
+    <footer>
+      <button class="save-btn" id="save-pdf">Save </button>
+    </footer>
+  </body>
+  
+
+      <!-- Include html2pdf.js Library -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+      <script>
+        document
+          .getElementById("save-pdf")
+          .addEventListener("click", function () {
+            // Get the content to save as PDF
+            const content = document.getElementById("page-content");
+
+            // Configure html2pdf options
+            const options = {
+              margin: 10,
+              filename: "attendance_page.pdf",
+              image: { type: "jpeg", quality: 0.98 },
+              html2canvas: { scale: 2 },
+              jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+            };
+
+            // Generate the PDF
+            html2pdf().set(options).from(content).save();
+          });
+      </script>
+    </body>
+  </html>
+</html>

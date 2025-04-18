@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>School Management System</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to School Management System</h1>
+      <p>Your one-stop solution for efficient school management.</p>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        <h2>About Our System</h2>
+        <p>
+          Managing a school has never been easier! Our software is designed to
+          streamline daily operations such as attendance tracking, profile
+          management, and course scheduling. Whether you're a student, teacher,
+          or administrator, this platform empowers you to save time and stay
+          organized.
+        </p>
+      </div>
+    </section>
+
+    <section id="features-benefits">
+      <div class="container">
+        <h2>Features & Benefits</h2>
+        <div class="features">
+          <h3>Key Features:</h3>
+          <ul>
+            <li>
+              Attendance Tracking: Keep records of student attendance
+              effortlessly.
+            </li>
+            <li>
+              Profile Management: Manage student and staff profiles with ease.
+            </li>
+            <li>
+              Course Management: Organize course schedules and assignments.
+            </li>
+            <li>Secure Login and Signup: Data privacy and security ensured.</li>
+          </ul>
+        </div>
+        <div class="benefits">
+          <h3>Benefits:</h3>
+          <ul>
+            <li>Save Time: Automate repetitive tasks.</li>
+            <li>Improve Accuracy: Minimize human errors in record-keeping.</li>
+            <li>Enhanced Accessibility: Access data anytime, anywhere.</li>
+            <li>User-Friendly Interface: Intuitive and easy to navigate.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="auth">
+      <div class="container">
+        <h2>Register Now</h2>
+        <div class="signup-container">
+          <form>
+            <div class="form-group">
+              <label for="fullname">Full Name</label>
+              <input
+                id="fullname"
+                type="text"
+                name="fullname"
+                placeholder="Full Name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input
+                id="phone"
+                type="tel"
+                name="phone"
+                placeholder="Phone Number"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                id="password"
+                type="password"
+                name="password"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="confirm_password">Confirm Password</label>
+              <input
+                id="confirm_password"
+                type="password"
+                name="confirm_password"
+                placeholder="Confirm Password"
+                required
+              />
+            </div>
+            <div class="form-actions">
+              <button type="submit" onclick="handleSignup(event)">
+                Signup
+              </button>
+            </div>
+          </form>
+          <div class="login-link">
+            <a
+              href="http://127.0.0.1:5500/school%20system%20software/frontend/login%20page/login.html"
+              >Already have an account? Log in</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        &copy; 2025 School Management System. All Rights Reserved. (by Yusuf
+        Ahmed)
+      </p>
+    </footer>
+  </body>
+</html>

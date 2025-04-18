@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold">Teacher Portal</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span id="username" class="mr-4"></span>
+                    <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 py-6">
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Course Selection -->
+            <div class="md:col-span-3 bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-bold mb-4">Select Course</h2>
+                <select id="courseSelect" class="w-full p-2 border rounded">
+                    <!-- Courses will be populated here -->
+                </select>
+            </div>
+
+            <!-- Attendance Section -->
+            <div class="md:col-span-2 bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-bold mb-4">Attendance</h2>
+                <div class="mb-4">
+                    <input type="date" id="attendanceDate" class="p-2 border rounded">
+                    <button onclick="markAllPresent()" class="ml-2 bg-green-500 text-white px-4 py-2 rounded">
+                        Mark All Present
+                    </button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Student</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="attendanceList" class="bg-white divide-y divide-gray-200">
+                            <!-- Attendance list will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Grade Input Section -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-bold mb-4">Grade Input</h2>
+                <div class="mb-4">
+                    <select id="assignmentSelect" class="w-full p-2 border rounded mb-4">
+                        <!-- Assignments will be populated here -->
+                    </select>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Student</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Grade</th>
+                                </tr>
+                            </thead>
+                            <tbody id="gradeList" class="bg-white divide-y divide-gray-200">
+                                <!-- Grade list will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <button onclick="saveGrades()" class="w-full bg-blue-500 text-white px-4 py-2 rounded">
+                    Save Grades
+                </button>
+            </div>
+
+            <!-- Student Search -->
+            <div class="md:col-span-3 bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-bold mb-4">Student Search</h2>
+                <div class="relative">
+                    <input type="text" id="studentSearch" 
+                        class="w-full p-2 border rounded" 
+                        placeholder="Search students...">
+                    <div id="searchResults" class="absolute z-10 w-full mt-1 bg-white border rounded shadow-lg hidden">
+                        <!-- Search results will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Report Generation -->
+            <div class="md:col-span-3 bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-bold mb-4">Generate Reports</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <button onclick="generateAttendanceReport()" class="bg-green-500 text-white px-4 py-2 rounded">
+                        Attendance Report
+                    </button>
+                    <button onclick="generateGradeReport()" class="bg-blue-500 text-white px-4 py-2 rounded">
+                        Grade Report
+                    </button>
+                    <button onclick="generatePerformanceReport()" class="bg-purple-500 text-white px-4 py-2 rounded">
+                        Performance Report
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

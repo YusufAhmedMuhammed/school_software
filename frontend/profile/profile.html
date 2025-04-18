@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="profile.css" />
+    <script src="profile.js"></script>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="#">School Manager</a>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a
+            href="http://127.0.0.1:5500/school%20system%20software/frontend/welcome%20page/index.html"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="http://127.0.0.1:5500/school%20system%20software/frontend/attendance%20page/attendance.html"
+            >Attendance</a
+          >
+        </li>
+        <li>
+          <a
+            href="http://127.0.0.1:5500/school%20system%20software/frontend/courses/courses.html"
+            >Courses</a
+          >
+        </li>
+        <li>
+          <a
+            href="http://127.0.0.1:5500/school%20system%20software/frontend/profile/profile.html"
+            class="active"
+            >Profile</a
+          >
+        </li>
+        <li>
+          <a
+            href="http://127.0.0.1:5500/school%20system%20software/frontend/login%20page/login.html"
+            >Login</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Profile Container -->
+    <div class="profile-container">
+      <div class="profile-header">
+        <h2>Welcome, Yusuf</h2>
+      </div>
+      <div class="profile-details">
+        <div class="profile-image-container">
+          <img
+            id="profile-image"
+            src="data:image/jpeg;base64,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 "
+            alt="Profile Image"
+          />
+        </div>
+        <div class="profile-info">
+          <h2>User Information</h2>
+          <p><strong>Email:</strong> user972387@gmail.com</p>
+          <p><strong>Phone:</strong> +1234567890</p>
+          <p><strong>Joined:</strong> January 2021</p>
+        </div>
+      </div>
+      <div class="profile-actions">
+        <button class="edit-profile">Edit Profile</button>
+        <button class="logout">Logout</button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Courses</title>
+    <link rel="stylesheet" href="courses.css" />
+    <script src="courses.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar">
+        <div class="nav-logo">
+          <a href="#">SchoolApp</a>
+        </div>
+        <ul class="nav-links">
+          <li>
+            <a
+              href="http://127.0.0.1:5500/school%20system%20software/frontend/welcome%20page/index.html"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="http://127.0.0.1:5500/school%20system%20software/frontend/profile/profile.html"
+              >Profile</a
+            >
+          </li>
+          <li>
+            <a
+              href="http://127.0.0.1:5500/school%20system%20software/frontend/attendance%20page/attendance.html"
+              >Attendance</a
+            >
+          </li>
+          <li>
+            <a
+              href="http://127.0.0.1:5500/school%20system%20software/frontend/courses/courses.html"
+              >Courses</a
+            >
+          </li>
+          <li>
+            <a
+              href="http://127.0.0.1:5500/school%20system%20software/frontend/login%20page/login.html"
+              >Login</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <h1>Available Courses</h1>
+    </header>
+    <section class="courses-section">
+      <div class="course-card">
+        <h2>Mathematics</h2>
+        <p>Learn the fundamentals of algebra, geometry, and calculus.</p>
+        <button onclick="toggleDetails(this)">Learn More</button>
+        <div class="course-details" style="display: none">
+          <p>
+            In-depth coverage of topics like linear equations, geometry
+            theorems, and calculus integrals. Perfect for students preparing for
+            advanced studies.
+          </p>
+        </div>
+      </div>
+      <div class="course-card">
+        <h2>Science</h2>
+        <p>Explore physics, chemistry, and biology concepts.</p>
+        <button>View Details</button>
+      </div>
+      <div class="course-card">
+        <h2>History</h2>
+        <p>Dive into the world of historical events and civilizations.</p>
+        <button>View Details</button>
+      </div>
+      <div class="course-card">
+        <h2>Computer Science</h2>
+        <p>Learn coding, data structures, and algorithms.</p>
+        <button>View Details</button>
+      </div>
+    </section>
+  </body>
+</html>
