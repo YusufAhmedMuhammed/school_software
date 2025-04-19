@@ -1,25 +1,31 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login Page</title>
+    <title>School Software - Login</title>
     <link rel="stylesheet" href="login.css" />
-    <script src="login.js"></script>
+    <!-- Add config and API files -->
+    <script src="../config.js"></script>
+    <script src="../api.js"></script>
+    <script src="login.js" defer></script>
   </head>
   <body>
     <div class="page-container">
       <header class="header-container">
         <h1>Welcome Back!</h1>
+        <p>Sign in to access your school account</p>
       </header>
       <section class="login-container">
-        <form>
+        <div id="error-message" class="error-message"></div>
+        <form id="login-form">
           <div class="form-group">
             <label for="username_or_email">Username or Email</label>
             <input
               id="username_or_email"
               type="text"
               name="username_or_email"
-              placeholder="username or email"
+              placeholder="Enter your username or email"
               required
             />
           </div>
@@ -29,26 +35,29 @@
               id="password"
               type="password"
               name="password"
-              placeholder="password"
+              placeholder="Enter your password"
               required
             />
           </div>
           <div class="form-actions">
-            <a href="javascript:void(0);" class="forgot-password"
-              >Forgot Password?</a
-            >
-            <button>
-              <a
-                href="http://127.0.0.1:5500/school%20system%20software/frontend/courses/courses.html"
-                >Login</a
-              >
-            </button>
+            <div class="remember-me">
+              <input type="checkbox" id="remember-me" name="remember-me">
+              <label for="remember-me">Remember me</label>
+            </div>
+            <a href="../forgot-password/forgot-password.html" class="forgot-password">Forgot Password?</a>
           </div>
+          <button type="submit" id="login-button" class="login-button">
+            Log In
+            <span id="login-spinner" class="spinner hidden"></span>
+          </button>
         </form>
         <div class="signup-link">
-          <a href="javascript:void(0);">Don’t have an account? Sign up</a>
+          <p>Don't have an account? <a href="../signup page/signup.html">Sign up</a></p>
         </div>
       </section>
+      <footer class="footer">
+        <p>&copy; 2023 School Software System. All rights reserved.</p>
+      </footer>
     </div>
   </body>
 </html>
