@@ -1,12 +1,15 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import auth, students, teachers, admin, courses, assignments
-from app.database import create_indexes
-import asyncio
+from .config import settings
+from .routers import auth, students, teachers, courses, attendance
+from .utils.error_handlers import setup_exception_handlers
 
-app = FastAPI(title="School Management System")
+app = FastAPI(
+    title=settings.APP_NAME,
+    debug=settings.DEBUG
+)
 
-# CORS middleware
+# Setup CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # In production, replace with specific origins
@@ -15,18 +18,31 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include routers
-app.include_router(auth.router, prefix="/auth", tags=["Authentication"])
-app.include_router(students.router, prefix="/students", tags=["Students"])
-app.include_router(teachers.router, prefix="/teachers", tags=["Teachers"])
-app.include_router(admin.router, prefix="/admin", tags=["Admin"])
-app.include_router(courses.router, prefix="/courses", tags=["Courses"])
-app.include_router(assignments.router, prefix="/assignments", tags=["Assignments"])
+# Setup exception handlers
+setup_exception_handlers(app)
 
-@app.on_event("startup")
-async def startup_event():
-    await create_indexes()
+# Include routers
+app.include_router(auth.router, prefix=settings.API_V1_STR, tags=["Authentication"])
+app.include_router(students.router, prefix=settings.API_V1_STR, tags=["Students"])
+app.include_router(teachers.router, prefix=settings.API_V1_STR, tags=["Teachers"])
+app.include_router(courses.router, prefix=settings.API_V1_STR, tags=["Courses"])
+app.include_router(attendance.router, prefix=settings.API_V1_STR, tags=["Attendance"])
 
 @app.get("/")
 async def root():
-    return {"message": "Welcome to the School Management System"}
+    """Root endpoint - API health check"""
+    return {
+        "status": "healthy",
+        "version": "1.0.0",
+        "environment": "development" if settings.DEBUG else "production",
+        "mock_data_enabled": settings.USE_MOCK_DATA
+    }
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=settings.DEBUG
+    )

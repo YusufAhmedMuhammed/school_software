@@ -1,0 +1,4 @@
+FIREBASE_CREDENTIALS_PATH=path/to/firebase-credentials.json
+FIREBASE_PROJECT_ID=your-project-id
+SECRET_KEY=your-secret-key
+USE_MOCK_DATA=True  # For development 
