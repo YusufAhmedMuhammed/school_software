@@ -5,6 +5,11 @@ from datetime import datetime
 
 load_dotenv()  # Load environment variables from .env
 MONGODB_URI = os.getenv("MONGODB_URI")
+JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
+JWT_ALGORITHM = os.getenv("JWT_ALGORITHM")
+CORS_ORIGINS = os.getenv("CORS_ORIGINS")
+ACCESS_TOKEN_EXPIRE_MINUTES = os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES")
+REFRESH_TOKEN_EXPIRE_DAYS = os.getenv("REFRESH_TOKEN_EXPIRE_DAYS")
 
 client = AsyncIOMotorClient(MONGODB_URI)
 db = client["school_management"]  # Database name
