@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
 const ProtectedRoute = ({ children, allowedRoles }) => {
@@ -27,9 +27,30 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
                 case 'admin':
                     return <Navigate to="/admin" replace />;
                 default:
-                    return <Navigate to="/login" replace />;
+                    // If role is invalid, clear storage and redirect to login
+                    localStorage.removeItem('user');
+                    localStorage.removeItem('token');
+                    return <Navigate to="/login" state={{ from: location }} replace />;
             }
         }
+        
+        // Add token to all API requests
+        useEffect(() => {
+            const originalFetch = window.fetch;
+            window.fetch = function(url, options = {}) {
+                if (url.startsWith('/api/')) {
+                    options.headers = {
+                        ...options.headers,
+                        'Authorization': `Bearer ${token}`
+                    };
+                }
+                return originalFetch(url, options);
+            };
+            
+            return () => {
+                window.fetch = originalFetch;
+            };
+        }, [token]);
         
         return children;
     } catch (error) {

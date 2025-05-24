@@ -1,16 +1,41 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './login.css';
 
 const Login = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const [formData, setFormData] = useState({
         username: '',
         password: '',
-        role: 'student' // Default role
     });
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+
+    // Check if user is already logged in
+    useEffect(() => {
+        const user = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
+        
+        if (user && token) {
+            const userData = JSON.parse(user);
+            // Redirect based on role
+            switch (userData.role) {
+                case 'student':
+                    navigate('/student-dashboard');
+                    break;
+                case 'teacher':
+                    navigate('/teacher-portal');
+                    break;
+                case 'admin':
+                    navigate('/admin');
+                    break;
+                default:
+                    localStorage.removeItem('user');
+                    localStorage.removeItem('token');
+            }
+        }
+    }, [navigate]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -26,7 +51,7 @@ const Login = () => {
         setLoading(true);
 
         try {
-            const response = await fetch('/api/v1/auth/login', {
+            const response = await fetch('http://localhost:8000/api/v1/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -50,17 +75,17 @@ const Login = () => {
                     navigate('/student-dashboard');
                     break;
                 case 'teacher':
-                    navigate('/teacher-dashboard');
+                    navigate('/teacher-portal');
                     break;
                 case 'admin':
-                    navigate('/admin-dashboard');
+                    navigate('/admin');
                     break;
                 default:
-                    navigate('/');
+                    throw new Error('Invalid user role');
             }
         } catch (err) {
             setError(err.message);
-    } finally {
+        } finally {
             setLoading(false);
         }
     };
@@ -104,20 +129,6 @@ const Login = () => {
                         />
                     </div>
 
-                    <div className="form-group">
-                        <label htmlFor="role">Login as</label>
-                        <select
-                            id="role"
-                            name="role"
-                            value={formData.role}
-                            onChange={handleChange}
-                        >
-                            <option value="student">Student</option>
-                            <option value="teacher">Teacher</option>
-                            <option value="admin">Admin</option>
-                        </select>
-                    </div>
-
                     <button 
                         type="submit" 
                         className="login-button"
@@ -128,7 +139,7 @@ const Login = () => {
                 </form>
 
                 <div className="login-footer">
-                    <p>Don't have an account? Contact your administrator</p>
+                    <p>Contact your administrator if you need access</p>
                 </div>
             </div>
         </div>

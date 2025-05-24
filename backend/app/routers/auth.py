@@ -10,6 +10,7 @@ from ..firebase.auth import FirebaseAuth
 from ..utils.error_handlers import APIError
 from ..firebase.firestore import db
 from ..config import settings
+from ..models.mock_data import get_mock_data
 from pydantic import BaseModel
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
